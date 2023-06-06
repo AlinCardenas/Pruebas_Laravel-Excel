@@ -14,7 +14,7 @@ class DatoExport implements FromCollection, WithHeadings,WithStyles
     * @return \Illuminate\Support\Collection
     */
     public function styles(Worksheet $sheet)
-    
+    { 
         $objStyle = new ReportStyles();
         // Configuración primer encabezado
         $sheet->mergeCells('A1:V1');
