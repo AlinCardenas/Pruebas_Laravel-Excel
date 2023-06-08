@@ -17,17 +17,19 @@ class DatoExport implements FromCollection, WithHeadings,WithStyles
     { 
         $objStyle = new ReportStyles();
         // Configuración primer encabezado
-        $sheet->mergeCells('A1:V1');
-        $sheet->getRowDimension(1)->setRowHeight(60);
-        $sheet->getStyle('A1:V1')->applyFromArray(
-            $objStyle->styleFirstHead
-        );
+        $objStyle->styleHead($sheet);
         /* Tamaño de las celdas en los encabezados */
         $objStyle->assignSizes($sheet);
         // Color de los encabezados
         $objStyle->assignHeadColor($sheet);
+        //Color celdas
         $highestRow = $objStyle->assignColorLastCell($sheet);
         $objStyle->assignColorCell($highestRow, $sheet); 
+        $objStyle->addSymbol($sheet); 
+        $objStyle->alignment($sheet, $highestRow);
+        $objStyle->assignLastText($sheet,$highestRow);
+
+        
     }
     public function headings(): array
     {
